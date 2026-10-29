@@ -14,13 +14,13 @@ pipeline {
 
     stage('SCA - Trivy fs') {
       steps {
-        sh 'docker run --rm -v "$PWD:/src" aquasec/trivy fs --scanners vuln,secret --severity CRITICAL,HIGH --ignore-unfixed --exit-code 1 /src'
+        sh 'docker run --rm -v "$PWD:/src" aquasec/trivy:0.69.3 fs --scanners vuln,secret --severity CRITICAL,HIGH --ignore-unfixed --exit-code 1 /src'
       }
     }
 
     stage('IaC - Trivy config') {
       steps {
-        sh 'docker run --rm -v "$PWD:/src" aquasec/trivy config --severity CRITICAL,HIGH --exit-code 1 /src/terraform'
+        sh 'docker run --rm -v "$PWD:/src" aquasec/trivy:0.69.3 config --severity CRITICAL,HIGH --exit-code 1 /src/terraform'
       }
     }
 
@@ -28,7 +28,7 @@ pipeline {
 
     stage('Container scan gate') {
       steps {
-        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image --severity CRITICAL,HIGH --ignore-unfixed --exit-code 1 $IMAGE'
+        sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.69.3 image --severity CRITICAL,HIGH --ignore-unfixed --exit-code 1 $IMAGE'
       }
     }
 
