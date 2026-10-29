@@ -60,3 +60,13 @@ gh attestation verify oci://ghcr.io/mamungtg/devsecops-pipeline-demo@sha256:<DIG
 ```
 
 The digest is shown in the "Push and capture digest" step of each main-branch run and on the package page.
+
+## Screenshots
+
+**PR #1: vulnerable dependency blocked by the SCA gate**
+
+![PR blocked](docs/images/02-pr-gate-blocked.png)
+
+**PR #1: remediation verified, all alerts fixed, checks passing**
+
+![Fix verified](docs/images/03-pr-fix-verified.png)
