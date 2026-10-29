@@ -6,7 +6,7 @@ Sanitized reference implementation based on patterns used in production.
 
 - `devsecops.yml`: GitHub Actions workflow
 - `Jenkinsfile`: equivalent Jenkins declarative pipeline
-- `triage.py`: converts Trivy findings into GitHub Issues for triage
+- `scripts/triage.py`: converts Trivy findings into GitHub Issues for triage
 
 ## Pipeline flow
 
